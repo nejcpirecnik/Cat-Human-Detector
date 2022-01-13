@@ -1,6 +1,4 @@
 
-## Cat&Human Detector
-
 **Cat&Human Detector** is a Python script that recognizes human and cat faces from an imported image.
 ##### It uses a ```opencv-python``` library. 
 ####
@@ -38,13 +36,13 @@ cv2.waitKey(0)
 ### Explained by sections
 ```import cv2``` Imports the OpenCV Python Library.
 
-```
+```python
 face_Cascade_cat = cv2.CascadeClassifier("cat.xml") 
 face_Cascade_human = cv2.CascadeClassifier("human.xml")
 ```
 It uses [Haar Cascade files](https://towardsdatascience.com/face-detection-with-haar-cascade-727f68dafd08) which include trained data to detect cat and human faces. ```cat.xml``` and ```human.xml``` both include seperate data.
 
-```
+```python
 image = cv2.imread('Photos/ch5.jpg')
 imgGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 ```
@@ -52,7 +50,7 @@ In this section you must provide the path to your image. You do that by replacin
 ###### I've also provided a couple of example photos of humans and cats.
 The second line converts the imported image into *grayscale*.
 
-```
+```python
 faces_cats = face_Cascade_cat.detectMultiScale(imgGray, 1.1, 4)
 faces_humans = face_Cascade_human.detectMultiScale(imgGray, 1.1, 4)
 ```
@@ -69,3 +67,15 @@ for (x, y, w, h) in faces_humans:
               cv2.FONT_HERSHEY_DUPLEX, 1, (255, 0, 0), 2)
 ```
 We run 2 loops. Both are very similar, the only difference is that one's for the cat and the other is for the human. We draw a rectangle around both faces and set its color, aswell as write the coresponding text above both rectangles. We can detect as many faces as we'd like.
+```python
+cv2.imshow("Rezultat", image)
+cv2.waitKey(0)
+```
+We output the final result, and wait for user input before closing the window.
+### Examples
+![Before Render](https://i.imgur.com/kwivEfh.png)
+
+![Before Render](https://i.imgur.com/vRXmoqp.png)
+
+
+
